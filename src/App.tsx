@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import StringDisplay from './components/StringDisplay';
+import StringToListContainer from './components/StringToListContainer';
 
 function App() {
   return (
-    <StringDisplay />
+    <StringToListContainer inputString={"(id, name, email, type(id, name, customFields(c1, c2, c3)), externalId)"} />
   );
 }
 
