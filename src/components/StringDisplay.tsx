@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useConvertStringToMap from "../hooks/useConvertStringToMap"
+import parseKeyValuePairsRecursively from "../helpers/parseKeyValuePairsRecursively"
 import RecursiveListDisplay from "./RecursiveListDisplay";
 
 
 export default function StringDisplay() {
     const inputString = "(id, name, email, type(id, name, customFields(c1, c2, c3)), externalId)";
-    const mapString = useConvertStringToMap;
+    const mapString = parseKeyValuePairsRecursively;
     const [mappedString, setMappedString] = useState<Map<string, any>>(new Map());
     const [shouldSortAlphabetically, setShouldSortAlphabetically] = useState<boolean>(true);
 
