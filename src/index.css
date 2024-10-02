@@ -24,3 +24,45 @@ ul.dash>li:before {
   width: 1em;
   margin-left: -1em;
 }
+
+.grid-container {
+  display: grid;
+  place-items: start center;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.center-div {
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+  background-color: #fbfbfc;
+  padding: 2rem;
+  padding-top: 0px;
+  box-shadow: 0 .5rem 1rem rgba(21, 20, 21, .15);
+  margin-top: 1rem;
+}
+
+.toggleButton {
+  box-shadow: 0 .125rem .25rem #15141513;
+  border-radius: .5rem;
+  text-transform: uppercase;
+  padding: .5rem;
+  font-size: .8rem;
+  background-color: #ffc355;
+  border-color: #ffc355;
+  font-weight: 550;
+  display: inline;
+  margin-left: 2rem;
+  color: black;
+  font-size: .8rem;
+  letter-spacing: 1px;
+  float: right;
+  margin-top: 1rem;
+}
+
+
+.header {
+  background-color: rgb(54, 70, 216);
+  padding: 1rem;
+  height: 1rem;
+}
