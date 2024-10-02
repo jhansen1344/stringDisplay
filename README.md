@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# Notes on Design Decisions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technology used
 
-## Available Scripts
+I have the most experience in C# and javascript.  Javascript was selected in part for the following reasons:
 
-In the project directory, you can run:
+- A running copy of the app must be provided.  Url link to hosted app is most convenient way to satisfy need.
+- No database/server calls needed.
+- Simple to host in github pages, same place repo is so no external resources (azure, vercel, etc) to be spun up and forgotten
 
-### `npm start`
+React was selected as framework to help avoid context switching beteween my normal work in React and plain javascript.  I accept that React is overkill for a simple application in exchange for the benefits of quicker development and easier theoretical maintainability.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I preferred the zero-configuration setup of Create-React-App over the customization and speed/performance of a tool like Vite.  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+No css framework used to avoid further bloat of app.
 
-### `npm test`
+## App
+- need service/function to convert string to an output
+ -- No simple regex generated the correct output, so function is recursive.  I accept the decrease in readability of recursive functions in favor of ability to reuse the function outside of the single provided string.
+ -- Map used instead of object for Key Order, Security and Accidental Keys reasons listed here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- need component(s) to call function and render output
+ -- Header placeholder component
+ -- "Wrapper" component for orchestrating the display
+ -- Recursive component for displaying output
+ --- Having recursive component do the sorting avoided need for another recursive function to handle sorting.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

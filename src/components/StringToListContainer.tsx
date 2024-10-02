@@ -15,9 +15,15 @@ export default function StringToListContainer(props: StringToListContainerProps)
         setMappedString(mapString(props.inputString));
     }, [])
     return (
-        <>
-            <RecursiveListDisplay nestedList={mappedString} shouldSortAlphabetically={shouldSortAlphabetically} />
-            <button onClick={() => setShouldSortAlphabetically(!shouldSortAlphabetically)}>{shouldSortAlphabetically ? ('Sort By Default') : ('Sort Alphabetically')}</button>
-        </>
+        <div className={"grid-container"}>
+            <div className={"center-div"}>
+                <p style={{ fontSize: "1.35rem", display: "inline" }}>STRING PARSER</p>
+                <button className="toggleButton" onClick={() => setShouldSortAlphabetically(!shouldSortAlphabetically)}>{shouldSortAlphabetically ? ('View Default') : ('View Alphabetically')}</button>
+                <p style={{ fontSize: ".9rem" }}><b>Original String:</b> {props.inputString}</p>
+                <hr />
+                <p style={{ fontSize: ".9rem" }}><b>{shouldSortAlphabetically ? 'Alphabetical ' : 'Default '}Parsed Output:</b></p>
+                <RecursiveListDisplay nestedList={mappedString} shouldSortAlphabetically={shouldSortAlphabetically} />
+            </div>
+        </div>
     )
 }
