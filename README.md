@@ -16,12 +16,12 @@ No css framework used to avoid further bloat of app.
 
 ## App
 - need service/function to convert string to an output
- -- No simple regex generated the correct output, so function is recursive.  I accept the decrease in readability of recursive functions in favor of ability to reuse the function outside of the single provided string.
- -- Map used instead of object for Key Order, Security and Accidental Keys reasons listed here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+    - No simple regex generated the correct output, so function is recursive.  I accept the decrease in readability of recursive functions in favor of ability to reuse the function outside of the single provided string.
+    - Map used instead of object for Key Order, Security and Accidental Keys reasons listed here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 
 - need component(s) to call function and render output
- -- Header placeholder component
- -- "Wrapper" component for orchestrating the display
- -- Recursive component for displaying output
- --- Having recursive component do the sorting avoided need for another recursive function to handle sorting.
+    - Header placeholder component
+    - "Wrapper" component for orchestrating the display
+    - Recursive component for displaying output
+        - Having recursive component do the sorting avoided need for another recursive function to handle sorting.
 
