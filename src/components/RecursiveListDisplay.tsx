@@ -1,15 +1,22 @@
 interface RecursiveListProps {
-    nestedList: any
+    nestedList: Map<string, any>
+    shouldSortAlphabetically: boolean
 }
 
 export default function RecursiveListDisplay(props: RecursiveListProps) {
-    console.log(props.nestedList);
+    let arrayFromMap = Array.from(props.nestedList);
+    if (props.shouldSortAlphabetically) {
+        arrayFromMap = arrayFromMap.sort();
+    }
     return (
         <ul className="dash">
-            {Object.keys(props.nestedList)
-                .map((key) => {
-                    return !!props.nestedList[key]
-                        ? <RecursiveListDisplay nestedList={props.nestedList[key]} />
+            {arrayFromMap
+                .map(([key, value]) => {
+                    return value !== null
+                        ? <>
+                            <li>{key} </li>
+                            <RecursiveListDisplay nestedList={value} shouldSortAlphabetically={props.shouldSortAlphabetically} />
+                        </>
                         : <li>{key} </li>
                 })}
         </ul >

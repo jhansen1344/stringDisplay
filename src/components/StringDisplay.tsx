@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
-import useConvertStringToObject from "../hooks/useConvertStringToObject"
+import useConvertStringToMap from "../hooks/useConvertStringToMap"
 import RecursiveListDisplay from "./RecursiveListDisplay";
 
 
 export default function StringDisplay() {
     const inputString = "(id, name, email, type(id, name, customFields(c1, c2, c3)), externalId)";
-    const convertString = useConvertStringToObject;
-    const [stringAsObject, setStringAsObject] = useState<any>({});
+    const mapString = useConvertStringToMap;
+    const [mappedString, setMappedString] = useState<Map<string, any>>(new Map());
+    const [shouldSortAlphabetically, setShouldSortAlphabetically] = useState<boolean>(true);
 
     useEffect(() => {
-        setStringAsObject(convertString(inputString));
+        setMappedString(mapString(inputString));
     }, [])
     return (
         <>
-            <RecursiveListDisplay nestedList={stringAsObject} />
-
-            <ul className="dash">
-                <li>Item 1</li>
-                <ul className="dash">
-                    <li>indentedAgain</li>
-                </ul>
-
-            </ul>
+            <RecursiveListDisplay nestedList={mappedString} shouldSortAlphabetically={shouldSortAlphabetically} />
+            <button onClick={() => setShouldSortAlphabetically(!shouldSortAlphabetically)}>{shouldSortAlphabetically ? ('Sort By Default') : ('Sort Alphabetically')}</button>
         </>
     )
 }
