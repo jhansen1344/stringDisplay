@@ -1,14 +1,14 @@
 # Notes on Design Decisions
 
-## Technology used
+## Technologies used
 
 I have the most experience in C# and javascript.  Javascript was selected in part for the following reasons:
 
-- A running copy of the app must be provided.  Url link to hosted app is most convenient way to satisfy need.
+- A running copy of the app must be provided.  Url link to hosted app is convenient way to satisfy need.
 - No database/server calls needed.
-- Simple to host in github pages, same place repo is so no external resources (azure, vercel, etc) to be spun up and forgotten
+- Simple to host in github pages, same place repo is so no external resources (azure, vercel, etc) to be spun up and forgotten.
 
-React was selected as framework to help avoid context switching beteween my normal work in React and plain javascript.  I accept that React is overkill for a simple application in exchange for the benefits of quicker development and easier theoretical maintainability.
+React was selected as framework to help avoid context switching beteween my normal work in React and plain javascript.  I accept that React is overkill for a simple application in exchange for the benefits of quicker development and maintainability.
 
 I preferred the zero-configuration setup of Create-React-App over the customization and speed/performance of a tool like Vite.  
 
@@ -23,5 +23,5 @@ No css framework used to avoid further bloat of app.
     - Header placeholder component
     - "Wrapper" component for orchestrating the display
     - Recursive component for displaying output
-        - Having recursive component do the sorting avoided need for another recursive function to handle sorting.
+        - Having recursive component do the sorting avoided need for another recursive function.
 
