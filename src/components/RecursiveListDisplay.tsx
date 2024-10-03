@@ -12,11 +12,11 @@ export default function RecursiveListDisplay(props: RecursiveListProps) {
     return (
         <ul className="dash">
             {arrayFromMap
-                .map(([key, value]) => {
-                    return value !== null
+                .map(([key, nestedList]) => {
+                    return nestedList !== null
                         ? <>
                             <li>{key} </li>
-                            <RecursiveListDisplay nestedList={value} shouldSortAlphabetically={props.shouldSortAlphabetically} />
+                            <RecursiveListDisplay nestedList={nestedList} shouldSortAlphabetically={props.shouldSortAlphabetically} />
                         </>
                         : <li>{key} </li>
                 })}

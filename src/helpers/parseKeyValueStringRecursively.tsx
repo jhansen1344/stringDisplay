@@ -1,6 +1,6 @@
 
-const parseKeyValuePairsRecursively = (inputString: string): Map<string, any> => {
-    const parseString = (keyValueString: string) => {
+const parseKeyValueStringRecursively = (inputString: string): Map<string, any> => {
+    const parseKeyValueFromString = (keyValueString: string) => {
         const openParentheses = keyValueString.indexOf('(');
         const isSimpleKey = openParentheses === -1;
         if (isSimpleKey) {
@@ -8,11 +8,12 @@ const parseKeyValuePairsRecursively = (inputString: string): Map<string, any> =>
         }
         const key = keyValueString.slice(0, openParentheses).trim();
         const value = keyValueString.slice(openParentheses + 1, -1);
-        return [key, parseKeyValuePairsRecursively(value)];
+        return [key, parseKeyValueStringRecursively(value)];
     }
 
     const sanitizeString = (rawString: string): string => {
-        if (rawString[0] === '(' && rawString[rawString.length - 1] === ')') {
+        const hasOuterParenthesis = rawString[0] === '(' && rawString[rawString.length - 1] === ')';
+        if (hasOuterParenthesis) {
             return rawString.substring(1, rawString.length - 1);
         }
         return rawString;
@@ -21,7 +22,7 @@ const parseKeyValuePairsRecursively = (inputString: string): Map<string, any> =>
     const sanitizedString = sanitizeString(inputString);
 
     const result = new Map();
-    let currentKeyValuePair = '';
+    let currentKeyValueString = '';
     let parenthesesCount = 0;
 
     for (let i = 0; i < sanitizedString.length; i++) {
@@ -36,21 +37,21 @@ const parseKeyValuePairsRecursively = (inputString: string): Map<string, any> =>
         }
 
         if (char === ',' && parenthesesCount === 0) {
-            const trimmedKeyValuePair = currentKeyValuePair.trim();
-            const parsedResult = parseString(trimmedKeyValuePair);
+            const trimmedKeyValuePair = currentKeyValueString.trim();
+            const parsedResult = parseKeyValueFromString(trimmedKeyValuePair);
             result.set(parsedResult[0], parsedResult[1]);
-            currentKeyValuePair = '';
+            currentKeyValueString = '';
         } else {
-            currentKeyValuePair += char;
+            currentKeyValueString += char;
         }
     }
 
-    if (currentKeyValuePair.trim()) {
-        const parsedResult = parseString(currentKeyValuePair.trim());
+    if (currentKeyValueString.trim()) {
+        const parsedResult = parseKeyValueFromString(currentKeyValueString.trim());
         result.set(parsedResult[0], parsedResult[1]);
     }
 
     return result;
 }
 
-export default parseKeyValuePairsRecursively 
+export default parseKeyValueStringRecursively 
